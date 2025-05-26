@@ -1,0 +1,38 @@
+name: BlogPlatform
+services:
+  blogplatform.api:
+    image: ${DOCKER_REGISTRY-}blogplatformapi
+    build:
+      context: .
+      dockerfile: BlogPlatform.API/Dockerfile
+    depends_on:
+      - blogplatform.db
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=blogplatform.db;Port=5432;Database=blogdb;Username=postgres;Password=postgres
+    networks:
+      - blog-network
+
+  blogplatform.db:
+    image: postgres:16
+    container_name: blogplatform-db
+    restart: always
+    environment:
+      POSTGRES_DB: blogdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - blog-network
+
+volumes:
+  postgres-data:
+
+networks:
+  blog-network:
+    driver: bridge

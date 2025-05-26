@@ -52,3 +52,52 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+# Entity Framework Core Migrations
+[Mm]igrations/
+
+# User secrets
+secrets.json
+
+# XUnit test results
+TestResults/
+*.trx
+
+# Local database files
+*.mdf
+*.ldf
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+
+# Rider IDE
+.idea/
+*.sln.iml
+
+# VS Code settings
+.vscode/
+
+# DotCover, Coverlet, and code coverage
+coverage.*
+.coverage
+*.coveragexml
+*.lcov
+*.opencover.xml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# SonarQube
+.sonar/
+
+# Dump files
+*.dmp
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+# Visual Studio local database and settings
+.vs/
